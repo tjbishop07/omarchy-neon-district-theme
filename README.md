@@ -28,3 +28,25 @@ Wallpaper generated with the built-in image generation tool. Prompt:
 Use case: stylized-concept. Asset type: ultrawide Linux desktop wallpaper, landscape 16:9, high resolution. Create a sophisticated cyberpunk city at midnight seen from a quiet elevated rooftop, rain-slick architecture and distant dense megastructures, sparse electric cyan and hot magenta light reflected on wet surfaces, deep near-black violet shadows, atmospheric haze, cinematic detailed digital matte painting. Keep upper third and left half subdued and uncluttered for desktop windows, concentrate architectural interest toward lower right, restrained glow rather than blown-out neon. Palette #0b0914 #151023 #36f9f6 #ff4f9a with tiny acid yellow accents. No text, no lettering, no logos, no watermarks, no borders.
 
 Border preview generated with the built-in image tool from the original wallpaper. Edit prompt: Add a thin rounded cyan `#36f9f6` to pink `#ff4f9a` diagonal gradient frame with a near-black violet margin; preserve the city composition, with no title bar, controls, or text.
+
+## Optional violet shadows and border compatibility
+
+`extras/neon-district.lua` adds soft violet shadows and makes the theme's cyan/pink borders take precedence over local border colors. If `hypr-shiny-border` is already loaded, it also recolors that effect while retaining its animation settings. The overrides only apply while Neon District is selected.
+
+Copy the file into your Hyprland config:
+
+```bash
+cp extras/neon-district.lua ~/.config/hypr/neon-district.lua
+```
+
+Add this at the **end** of `~/.config/hypr/hyprland.lua`, after other appearance plugins:
+
+```lua
+require("hypr.neon-district")
+```
+
+Run `hyprctl reload` and check `hyprctl configerrors`. Remove the `require` line and reload to undo. This is optional because Omarchy does not execute Lua shipped by a Git-installed theme automatically. Shadow settings follow the [Hyprland decoration documentation](https://wiki.hypr.land/Configuring/Basics/Variables/#decoration).
+
+## Editor colors
+
+Omarchy generates matching Neovim, Helix, and VS Code-family palettes from `colors.toml` when the theme is applied. No separate editor theme is bundled; editor integration depends on your installed Omarchy setup.
