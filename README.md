@@ -1,12 +1,21 @@
 # Neon District
 
-A cyberpunk Omarchy theme: near-black violet, electric cyan, hot pink, and pale lavender text. Includes a custom rainy city wallpaper.
+A cyberpunk Omarchy theme: near-black violet, electric cyan, hot pink, and pale lavender text. Includes two custom cyberpunk wallpapers.
 
 ![Neon District styled preview with a cyan-to-pink gradient window border](preview.png)
 
 *Styled wallpaper preview illustrating the gradient window border. Theme accents: electric cyan `#36f9f6`, hot pink `#ff4f9a`, and near-black violet `#0b0914`.*
 
 Install by copying this directory to `~/.config/omarchy/themes/neon-district`, then run `omarchy theme set neon-district`.
+
+## Wallpapers
+
+| Neon District | After Hours |
+| --- | --- |
+| [![Dense neon city skyline](backgrounds/neon-district.png)](backgrounds/neon-district.png) | [![Quiet rooftop with cyan lighting and a pink doorway](backgrounds/after-hours.png)](backgrounds/after-hours.png) |
+| Detailed rainy cityscape | Quieter rooftop with more dark space |
+
+Cycle between them with `omarchy theme bg next` while Neon District is active.
 
 ## Lock screen and terminal prompt
 
