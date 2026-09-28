@@ -31,7 +31,7 @@ The terminal sample is an illustration, not a desktop screenshot. The swatches u
 
 The first desktop widget uses **chamfered top-left and bottom-right corners**, a cyan-to-pink gradient border, and a dark translucent surface. Angular **Orbitron** labels and **DSEG7 Classic** seven-segment numbers give it a digital instrument-panel look. The screenshot above uses labeled sample data.
 
-It shows current conditions, feels-like temperature, wind, humidity, and a three-day forecast. It sits behind application windows, refreshes every 15 minutes, and marks retained readings as stale when an update fails. Click the refresh arrow to retry.
+It shows current conditions, feels-like temperature, wind, humidity, and a three-day forecast. It sits behind application windows, refreshes every 30 minutes, and marks retained readings as stale when an update fails. Click the refresh arrow to retry.
 
 ```bash
 python3 install.py --weather-widget --dry-run

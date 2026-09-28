@@ -27,8 +27,9 @@ Item {
     if (allowNetwork) refresh()
     else { fetch.running = false; weather = null; error = "Weather access is not enabled" }
   }
+  readonly property int refreshIntervalMs: 30 * 60 * 1000
   property double now: Date.now()
-  readonly property bool stale: weather !== null && (error !== "" || now - Date.parse(weather.updated) > 1800000)
+  readonly property bool stale: weather !== null && (error !== "" || now - Date.parse(weather.updated) > 2 * refreshIntervalMs)
   function refresh() {
     if (allowNetwork && !fetch.running) {
       if (!weather) error = ""
@@ -45,7 +46,7 @@ Item {
     function status(): string {
       return JSON.stringify({enabled: root.allowNetwork, loading: fetch.running,
         available: root.weather !== null, stale: root.stale, error: root.error,
-        unit: root.unit, updated: root.weather ? root.weather.updated : null})
+        unit: root.unit, refreshMinutes: root.refreshIntervalMs / 60000, updated: root.weather ? root.weather.updated : null})
     }
   }
   onUnitChanged: { weather = null; if (fetch.running) fetch.running = false; refresh() }
@@ -65,7 +66,7 @@ Item {
       }
     }
   }
-  Timer { interval: 900000; running: true; repeat: true; onTriggered: root.refresh() }
+  Timer { interval: root.refreshIntervalMs; running: true; repeat: true; onTriggered: root.refresh() }
   Timer { interval: 60000; running: true; repeat: true; onTriggered: root.now = Date.now() }
   FileView {
     path: Quickshell.env("HOME") + "/.local/state/omarchy/settings/weather.json"
