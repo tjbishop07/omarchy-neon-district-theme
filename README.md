@@ -2,6 +2,10 @@
 
 A cyberpunk Omarchy theme: near-black violet, electric cyan, hot pink, and pale lavender text. Includes a custom rainy city wallpaper.
 
+![Neon District wallpaper preview: a rainy cyberpunk city illuminated by cyan and pink neon](backgrounds/neon-district.png)
+
+*Included wallpaper. Theme accents: electric cyan `#36f9f6`, hot pink `#ff4f9a`, and near-black violet `#0b0914`.*
+
 Install by copying this directory to `~/.config/omarchy/themes/neon-district`, then run `omarchy theme set neon-district`.
 
 Previous theme on this machine: `custom`. Restore with `omarchy theme set custom`.
