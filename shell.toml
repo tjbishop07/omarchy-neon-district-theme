@@ -1,0 +1,40 @@
+[bar]
+background = "#0b0914"
+text = "#e5def5"
+active = "#ff4f9a"
+
+[hyprland]
+active-border = "rgba(36f9f6ee) rgba(ff4f9aee) 45deg"
+active-border-foreground = "rgba(36f9f6ee) rgba(ff4f9aee) 45deg"
+
+[notifications]
+background = "#151023"
+text = "#e5def5"
+border = "hyprland.active-border"
+countdown = "#ff4f9a"
+
+[popups]
+background = "#151023"
+text = "#e5def5"
+border = "hyprland.active-border"
+
+[menu]
+background = "#0b0914"
+text = "#e5def5"
+border = "hyprland.active-border"
+selected-background = "#36f9f6"
+selected-background-alpha = 0.10
+selected-text = "#9bfffc"
+selected-border = "#36f9f6"
+selected-border-alpha = 0.6
+
+[launcher]
+background = "#0b0914"
+background-alpha = 0.97
+text = "#e5def5"
+border = "hyprland.active-border"
+selected-background = "#36f9f6"
+selected-background-alpha = 0.10
+selected-text = "#9bfffc"
+selected-border = "#36f9f6"
+selected-border-alpha = 0.6
