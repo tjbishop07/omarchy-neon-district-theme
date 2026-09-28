@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "neon-district.weather",
+  "name": "Neon District Weather",
+  "version": "1.0.0",
+  "author": "tjbishop07",
+  "description": "Desktop weather with opposing chamfers and a cyan-to-pink border",
+  "kinds": ["service"],
+  "entryPoints": {"service": "Service.qml"}
+}

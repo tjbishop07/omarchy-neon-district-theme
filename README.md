@@ -25,6 +25,39 @@ See [INSTALL.md](INSTALL.md) for verification, staging, and rollback. Coding age
 
 The terminal sample is an illustration, not a desktop screenshot. The swatches use the values in `colors.toml`.
 
+## Desktop widgets — Weather
+
+![Weather widget with opposing chamfered corners; sample data](assets/weather-widget.png)
+
+The first desktop widget uses **chamfered top-left and bottom-right corners**, a cyan-to-pink gradient border, and a dark translucent surface. The screenshot above uses labeled sample data.
+
+It shows current conditions, feels-like temperature, wind, humidity, and a three-day forecast. It sits behind application windows, refreshes every 15 minutes, and marks retained readings as stale when an update fails. Click the refresh arrow to retry.
+
+```bash
+python3 install.py --weather-widget --dry-run
+python3 install.py --weather-widget
+omarchy-shell shell rescanPlugins
+omarchy plugin enable neon-district.weather
+```
+
+Network access defaults to off. To retrieve weather, explicitly allow sending the location coordinates already stored by Omarchy to [Open-Meteo](https://open-meteo.com/) by adding `"allowNetwork": true` to the widget's entry in `~/.config/omarchy/shell.json`. Merge these fields into the existing entry; do not replace the rest of the configuration:
+
+```json
+{
+  "id": "neon-district.weather",
+  "allowNetwork": true,
+  "unit": "imperial",
+  "x": 28,
+  "y": 72
+}
+```
+
+`unit` accepts `metric` or `imperial`; when omitted, an `en_US` locale uses Fahrenheit and other locales use Celsius. Optional `monitor` selects an output name (for example `eDP-1`); otherwise the first screen is used. Coordinates are logical pixels from the upper-left. Set your city in Omarchy's existing weather panel. No API key is needed; weather data comes from [Open-Meteo's forecast API](https://open-meteo.com/en/docs).
+
+After updating plugin code, use `omarchy restart shell` if the running shell retains the old version. Disabling and re-enabling a plugin may reset its per-plugin settings; review the entry afterward.
+
+Check live status with `omarchy-shell neon-weather status` or refresh with `omarchy-shell neon-weather refresh`. Disable with `omarchy plugin disable neon-district.weather`. `widgets/neon-district.weather/ChamferFrame.qml` is the reusable frame for future widgets. `WeatherCard.qml` is independent of the desktop host, making offline preview/testing possible.
+
 ## Wallpapers
 
 | Neon District | After Hours |

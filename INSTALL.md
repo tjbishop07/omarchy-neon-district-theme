@@ -19,10 +19,11 @@ Expected results: current theme `Neon District`, no Hyprland configuration error
 
 - No flags: copy theme assets into `~/.config/omarchy/themes/neon-district` without activating.
 - `--dry-run`: show the planned file changes and optional activation; make no changes.
+- `--weather-widget`: also copy the optional desktop weather plugin. Enabling it and authorizing weather requests are separate steps documented in README.md.
 - `--apply`: copy assets and run `omarchy theme set neon-district`.
 - `--config-dir PATH`: use a different configuration root for staging or testing. Cannot be combined with activation outside `~/.config`.
 - Existing installations are backed up under `~/.config/omarchy/theme-backups/` before changes. Unchanged installations are not backed up again.
-- No root privileges, package installation, shell profile edits, or optional extras installation.
+- No root privileges, package installation, shell profile edits, or automatic optional-extras activation.
 
 The installer only manages the four root theme configuration files and PNG wallpapers in `backgrounds/`. It does not delete unrelated or older files.
 
