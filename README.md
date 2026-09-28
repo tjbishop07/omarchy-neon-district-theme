@@ -158,3 +158,24 @@ Select your previous theme with `omarchy theme set <previous-theme>` (`custom` o
 ## Image sources
 
 Wallpapers and the framed preview were generated with the built-in image generation tool. Prompts are saved for [the original wallpaper and border preview](extras/original-image-prompts.md) and [After Hours](extras/after-hours-prompt.md). The palette guide is a vector illustration built from the theme colors.
+
+### Rain lock screen (Lock Explorer)
+
+![Neon District Rain lock-screen preview](assets/lock-rain-preview.png)
+
+The optional **Neon District Rain** design adds the widgets' rain-on-glass effect
+behind the Editorial clock and password controls. It requires Lock Screen Explorer;
+its authentication code stays in that plugin. The canvas runs at half resolution,
+stops when the display sleeps, and is omitted from static boot snapshots.
+
+```bash
+python3 extras/lock-screen/install.py
+omarchy-shell lock rescanDesigns
+omarchy-shell lock setDesign my-neondistrictrain
+```
+
+Preview without locking: `omarchy-shell lock previewDesign my-neondistrictrain`.
+Press Escape to close. Return to the original with
+`omarchy-shell lock setDesign editorial`. The installer backs up changed files;
+the custom design is kept separately from plugin updates. Editorial is adapted
+from SirJul1337's MIT-licensed Lock Explorer (license included beside the design).

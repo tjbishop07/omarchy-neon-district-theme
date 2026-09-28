@@ -29,6 +29,12 @@ This repository is the Neon District Omarchy theme. Read INSTALL.md before insta
 - The system plugin packages copies of the weather plugin's shared frame, `RainGlass.qml`, typography, digital readout, fonts, and licenses. Keep these assets byte-identical; Omarchy forbids symlinks inside plugin packages.
 - For new plugins, finish copying and validating before enabling them. Avoid overlapping file-triggered hot reloads with a shell restart, given the observed Quickshell reload crash.
 
+## Rain lock screen
+
+- Optional Lock Explorer custom design: `python3 extras/lock-screen/install.py`, then rescan and select `my-neondistrictrain` as documented in README.md.
+- Keep authentication in upstream `DesignBase`/`PasswordField`; only change visual layers. Verify using `previewDesign`, never by locking the session.
+- Its RainGlass copy uses the widget effect with 110 beads for fullscreen coverage and renders at half resolution. Preserve sleep/snapshot guards.
+
 ## Verification
 
 After activation, run `omarchy theme current` and confirm `Neon District`. Run `hyprctl configerrors`; report any errors rather than claiming success. Check the current background symlink resolves to an installed wallpaper. Do not lock the user's session to test styling.
