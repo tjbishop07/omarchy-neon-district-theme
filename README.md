@@ -8,7 +8,20 @@ A cyberpunk Omarchy theme: near-black violet, electric cyan, hot pink, and pale 
 
 Install by copying this directory to `~/.config/omarchy/themes/neon-district`, then run `omarchy theme set neon-district`.
 
-Previous theme on this machine: `custom`. Restore with `omarchy theme set custom`.
+## Lock screen and terminal prompt
+
+The theme includes cyan lock-screen text, a pink password border, and yellow error feedback. With Lock Explorer's **Editorial** layout, this gives an oversized cyan clock over the city wallpaper. The stock lock screen also uses these colors; layout depends on your lock plugin.
+
+An optional Starship prompt is included at `extras/starship.toml`: cyan paths, pink Git branches/status, and yellow command-error indicators. It uses terminal ANSI colors, so it adapts when you switch themes. Back up your existing prompt before installing:
+
+```bash
+cp ~/.config/starship.toml ~/.config/starship.toml.bak.$(date +%s)
+cp extras/starship.toml ~/.config/starship.toml
+```
+
+The prompt appears on the next shell prompt redraw. Installing the theme alone does not replace your Starship configuration.
+
+Previous theme on the original machine: `custom`. Restore with `omarchy theme set custom`.
 
 Wallpaper generated with the built-in image generation tool. Prompt:
 

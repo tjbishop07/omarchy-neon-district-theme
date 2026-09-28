@@ -38,3 +38,16 @@ selected-background-alpha = 0.10
 selected-text = "#9bfffc"
 selected-border = "#36f9f6"
 selected-border-alpha = 0.6
+
+[lock]
+background = "#151023"
+background-alpha = 0.90
+text = "#36f9f6"
+placeholder = "#a59abb"
+text-error = "#f4ef78"
+border = "#ff4f9a"
+border-active = "#ff4f9a"
+border-error = "#f4ef78"
+border-alpha = 1.0
+selection = "#ff4f9a"
+selection-alpha = 0.35
