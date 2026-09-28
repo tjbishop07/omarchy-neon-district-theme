@@ -1,0 +1,15 @@
+Bundled, unmodified fonts loaded locally with Qt FontLoader.
+No system font installation or runtime font download is needed.
+
+Orbitron variable font (stored as Orbitron.ttf)
+Source: https://github.com/google/fonts/tree/main/ofl/orbitron
+File: Orbitron[wght].ttf
+License: Orbitron-OFL.txt (SIL Open Font License 1.1)
+
+DSEG7 Classic Regular, version 0.46
+Source: https://github.com/keshikan/DSEG/releases/tag/v0.46
+Archive: fonts-DSEG_v046.zip
+File: DSEG7Classic-Regular.ttf
+License: DSEG-LICENSE.txt (SIL Open Font License 1.1)
+
+Downloaded 2026-09-27.

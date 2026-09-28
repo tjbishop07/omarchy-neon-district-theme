@@ -53,7 +53,7 @@ def main():
         plugin_source = source / "widgets/neon-district.weather"
         plugin_target = config / "omarchy/plugins/neon-district.weather"
         plugin_files = [p for p in plugin_source.iterdir()
-                        if p.suffix in (".qml", ".js", ".json", ".py") and not p.name.startswith("test_")]
+                        if p.suffix in (".qml", ".js", ".json", ".py", ".ttf", ".txt") and not p.name.startswith("test_")]
         if not plugin_files or not (plugin_source / "manifest.json").is_file():
             parser.error("Weather plugin source is missing")
         if plugin_target.is_symlink() or any((plugin_target / p.name).is_symlink() for p in plugin_files):

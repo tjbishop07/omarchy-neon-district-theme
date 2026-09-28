@@ -29,7 +29,7 @@ The terminal sample is an illustration, not a desktop screenshot. The swatches u
 
 ![Weather widget with opposing chamfered corners; sample data](assets/weather-widget.png)
 
-The first desktop widget uses **chamfered top-left and bottom-right corners**, a cyan-to-pink gradient border, and a dark translucent surface. The screenshot above uses labeled sample data.
+The first desktop widget uses **chamfered top-left and bottom-right corners**, a cyan-to-pink gradient border, and a dark translucent surface. Angular **Orbitron** labels and **DSEG7 Classic** seven-segment numbers give it a digital instrument-panel look. The screenshot above uses labeled sample data.
 
 It shows current conditions, feels-like temperature, wind, humidity, and a three-day forecast. It sits behind application windows, refreshes every 15 minutes, and marks retained readings as stale when an update fails. Click the refresh arrow to retry.
 
@@ -56,7 +56,7 @@ Network access defaults to off. To retrieve weather, explicitly allow sending th
 
 After updating plugin code, use `omarchy restart shell` if the running shell retains the old version. Disabling and re-enabling a plugin may reset its per-plugin settings; review the entry afterward.
 
-Check live status with `omarchy-shell neon-weather status` or refresh with `omarchy-shell neon-weather refresh`. Disable with `omarchy plugin disable neon-district.weather`. `widgets/neon-district.weather/ChamferFrame.qml` is the reusable frame for future widgets. `WeatherCard.qml` is independent of the desktop host, making offline preview/testing possible.
+Check live status with `omarchy-shell neon-weather status` or refresh with `omarchy-shell neon-weather refresh`. Disable with `omarchy plugin disable neon-district.weather`. `widgets/neon-district.weather/ChamferFrame.qml` is the reusable frame for future widgets. `WeatherCard.qml` is independent of the desktop host, making offline preview/testing possible. `WidgetTypography.qml` and `DigitalReadout.qml` provide reusable typography for future widgets. Both fonts are bundled locally with their SIL Open Font License files; no system-wide font change or runtime font download is required. See [font sources](widgets/neon-district.weather/FONT-SOURCES.txt).
 
 ## Wallpapers
 

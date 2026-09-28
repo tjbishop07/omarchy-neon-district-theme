@@ -17,6 +17,7 @@ This repository is the Neon District Omarchy theme. Read INSTALL.md before insta
 
 - Install only when requested: `python3 install.py --weather-widget`, then rescan and enable as described in README.md.
 - Live weather sends configured coordinates to Open-Meteo; `allowNetwork` defaults to false. Obtain explicit authorization for that data transfer before enabling it.
+- Bundle widget fonts and their licenses; use `WidgetTypography.qml` and `DigitalReadout.qml` for consistent labels and numbers. Do not change the global desktop font for a widget styling request.
 - Never present fixture/sample readings as live weather. The README preview is labeled SAMPLE.
 - The plugin reads the existing Omarchy weather location; do not invent or overwrite location settings.
 - Run `python3 widgets/neon-district.weather/test_weather.py` after backend changes.
