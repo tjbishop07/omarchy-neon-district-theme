@@ -52,6 +52,10 @@ Network access defaults to off. To retrieve weather, explicitly allow sending th
 }
 ```
 
+![Animated rain on the system widget; sample readings](assets/widget-rain.gif)
+
+Both widgets include animated rain on glass: stationary beads, slow falling drops, and faint neon reflections behind the readings. The rain stays inside the chamfered border. Set `"rainEnabled": false` in a plugin entry to turn it off; the system widget inherits the weather setting unless overridden. Animation uses a small 20 FPS canvas and pauses when hidden.
+
 The widget surface defaults to **82% opacity**; `"backgroundOpacity": 0.82` in the same plugin entry adjusts the fill independently of the border and text (range 0.1–1.0).
 
 For backdrop blur, copy the optional compositor settings and load them at the end of `~/.config/hypr/hyprland.lua`:

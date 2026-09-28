@@ -77,6 +77,7 @@ Item {
       stats: root.stats; cpuHistory: root.cpuHistory; memoryHistory: root.memoryHistory
       stale: root.stale; error: root.error
       diskLabel: root.config.diskPath ? "DISK USAGE" : "HOME DISK"
+      rainEnabled: root.config.rainEnabled === undefined ? root.weatherConfig.rainEnabled !== false : root.config.rainEnabled !== false
       surfaceOpacity: root.config.backgroundOpacity === undefined
         ? (root.weatherConfig.backgroundOpacity === undefined ? 0.35 : Number(root.weatherConfig.backgroundOpacity))
         : Math.max(0.1, Math.min(1, Number(root.config.backgroundOpacity)))

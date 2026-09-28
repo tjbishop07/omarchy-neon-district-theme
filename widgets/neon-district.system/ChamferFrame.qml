@@ -8,6 +8,7 @@ Item {
   property color endColor: "#ff4f9a"
   property color surfaceColor: "#0b0914"
   property real surfaceOpacity: 0.82
+  property bool rainEnabled: true
   default property alias content: body.data
 
   Canvas {
@@ -46,5 +47,6 @@ Item {
   onEndColorChanged: outline.requestPaint()
   onSurfaceColorChanged: outline.requestPaint()
   onSurfaceOpacityChanged: outline.requestPaint()
+  RainGlass { anchors.fill: parent; cut: root.cut; animated: root.rainEnabled }
   Item { id: body; anchors.fill: parent; anchors.margins: 24 }
 }

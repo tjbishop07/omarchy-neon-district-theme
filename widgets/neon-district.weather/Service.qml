@@ -93,6 +93,7 @@ Item {
 
     WeatherCard {
       anchors.fill: parent
+      rainEnabled: root.config.rainEnabled !== false
       surfaceOpacity: root.config.backgroundOpacity !== undefined && isFinite(Number(root.config.backgroundOpacity))
         ? Math.max(0.1, Math.min(1, Number(root.config.backgroundOpacity))) : 0.82
       weather: root.weather

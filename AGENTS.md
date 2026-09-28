@@ -26,7 +26,7 @@ This repository is the Neon District Omarchy theme. Read INSTALL.md before insta
 
 - Install when requested with `python3 install.py --system-widget`; enable `neon-district.system` after a plugin rescan. No network permission is needed: it only reads local counters.
 - Run `python3 widgets/neon-district.system/test_monitor.py` after collector changes.
-- The system plugin packages copies of the weather plugin's shared frame, typography, digital readout, fonts, and licenses. Keep these assets byte-identical; Omarchy forbids symlinks inside plugin packages.
+- The system plugin packages copies of the weather plugin's shared frame, `RainGlass.qml`, typography, digital readout, fonts, and licenses. Keep these assets byte-identical; Omarchy forbids symlinks inside plugin packages.
 - For new plugins, finish copying and validating before enabling them. Avoid overlapping file-triggered hot reloads with a shell restart, given the observed Quickshell reload crash.
 
 ## Verification
