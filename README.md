@@ -6,7 +6,23 @@ A cyberpunk Omarchy theme: near-black violet, electric cyan, hot pink, and pale 
 
 *Styled wallpaper preview illustrating the gradient window border. Theme accents: electric cyan `#36f9f6`, hot pink `#ff4f9a`, and near-black violet `#0b0914`.*
 
-Install by copying this directory to `~/.config/omarchy/themes/neon-district`, then run `omarchy theme set neon-district`.
+## Install
+
+Requires an Omarchy installation using `colors.toml` and the Quickshell-based shell. Run from a checkout of this repository:
+
+```bash
+mkdir -p ~/.config/omarchy/themes/neon-district
+cp -r colors.toml shell.toml icons.theme keyboard.rgb backgrounds ~/.config/omarchy/themes/neon-district/
+omarchy theme set neon-district
+```
+
+This installs the palette, lock-screen colors, and wallpapers. The optional prompt and window effects below are separate user configuration.
+
+## Palette
+
+![Neon District palette and illustrative terminal prompt](assets/palette.svg)
+
+The terminal sample is an illustration, not a desktop screenshot. The swatches use the values in `colors.toml`.
 
 ## Wallpapers
 
@@ -30,14 +46,6 @@ cp extras/starship.toml ~/.config/starship.toml
 
 The prompt appears on the next shell prompt redraw. Installing the theme alone does not replace your Starship configuration.
 
-Previous theme on the original machine: `custom`. Restore with `omarchy theme set custom`.
-
-Wallpaper generated with the built-in image generation tool. Prompt:
-
-Use case: stylized-concept. Asset type: ultrawide Linux desktop wallpaper, landscape 16:9, high resolution. Create a sophisticated cyberpunk city at midnight seen from a quiet elevated rooftop, rain-slick architecture and distant dense megastructures, sparse electric cyan and hot magenta light reflected on wet surfaces, deep near-black violet shadows, atmospheric haze, cinematic detailed digital matte painting. Keep upper third and left half subdued and uncluttered for desktop windows, concentrate architectural interest toward lower right, restrained glow rather than blown-out neon. Palette #0b0914 #151023 #36f9f6 #ff4f9a with tiny acid yellow accents. No text, no lettering, no logos, no watermarks, no borders.
-
-Border preview generated with the built-in image tool from the original wallpaper. Edit prompt: Add a thin rounded cyan `#36f9f6` to pink `#ff4f9a` diagonal gradient frame with a near-black violet margin; preserve the city composition, with no title bar, controls, or text.
-
 ## Optional violet shadows and border compatibility
 
 `extras/neon-district.lua` adds soft violet shadows and makes the theme's cyan/pink borders take precedence over local border colors. If `hypr-shiny-border` is already loaded, it also recolors that effect while retaining its animation settings. The overrides only apply while Neon District is selected.
@@ -59,3 +67,11 @@ Run `hyprctl reload` and check `hyprctl configerrors`. Remove the `require` line
 ## Editor colors
 
 Omarchy generates matching Neovim, Helix, and VS Code-family palettes from `colors.toml` when the theme is applied. No separate editor theme is bundled; editor integration depends on your installed Omarchy setup.
+
+## Restore your previous setup
+
+Select your previous theme with `omarchy theme set <previous-theme>` (`custom` on the original machine). Restore your saved `starship.toml` backup to undo the optional prompt. Remove `require("hypr.neon-district")` from your Hyprland configuration and reload to remove the optional appearance override.
+
+## Image sources
+
+Wallpapers and the framed preview were generated with the built-in image generation tool. Prompts are saved for [the original wallpaper and border preview](extras/original-image-prompts.md) and [After Hours](extras/after-hours-prompt.md). The palette guide is a vector illustration built from the theme colors.
