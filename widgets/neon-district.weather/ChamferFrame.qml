@@ -6,7 +6,8 @@ Item {
   property real borderWidth: 2
   property color startColor: "#36f9f6"
   property color endColor: "#ff4f9a"
-  property color surfaceColor: "#ee0b0914"
+  property color surfaceColor: "#0b0914"
+  property real surfaceOpacity: 0.82
   default property alias content: body.data
 
   Canvas {
@@ -28,7 +29,8 @@ Item {
       c.lineTo(inset, bottom)
       c.lineTo(inset, inset + cut)
       c.closePath()
-      c.fillStyle = root.surfaceColor
+      c.fillStyle = Qt.rgba(root.surfaceColor.r, root.surfaceColor.g, root.surfaceColor.b,
+                           Math.max(0, Math.min(1, root.surfaceOpacity)))
       c.fill()
       var gradient = c.createLinearGradient(0, 0, width, height)
       gradient.addColorStop(0, root.startColor)
@@ -43,5 +45,6 @@ Item {
   onStartColorChanged: outline.requestPaint()
   onEndColorChanged: outline.requestPaint()
   onSurfaceColorChanged: outline.requestPaint()
+  onSurfaceOpacityChanged: outline.requestPaint()
   Item { id: body; anchors.fill: parent; anchors.margins: 24 }
 }
