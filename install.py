@@ -13,6 +13,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true", help="Show changes without writing files")
     parser.add_argument("--weather-widget", action="store_true", help="Also copy the optional weather plugin (does not enable it)")
+    parser.add_argument("--system-widget", action="store_true", help="Also copy the optional system monitor (does not enable it)")
     parser.add_argument("--apply", action="store_true", help="Activate the installed theme using Omarchy")
     parser.add_argument("--config-dir", type=Path, default=Path.home() / ".config",
                         help="Configuration root (default: ~/.config)")
@@ -49,15 +50,18 @@ def main():
             dest = target / relative
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(source / relative, dest)
-    if args.weather_widget:
-        plugin_source = source / "widgets/neon-district.weather"
-        plugin_target = config / "omarchy/plugins/neon-district.weather"
+    for widget, selected in (("weather", args.weather_widget), ("system", args.system_widget)):
+        if not selected:
+            continue
+        plugin_id = f"neon-district.{widget}"
+        plugin_source = source / "widgets" / plugin_id
+        plugin_target = config / "omarchy/plugins" / plugin_id
         plugin_files = [p for p in plugin_source.iterdir()
                         if p.suffix in (".qml", ".js", ".json", ".py", ".ttf", ".txt") and not p.name.startswith("test_")]
         if not plugin_files or not (plugin_source / "manifest.json").is_file():
-            parser.error("Weather plugin source is missing")
+            parser.error(f"{plugin_id} source is missing")
         if plugin_target.is_symlink() or any((plugin_target / p.name).is_symlink() for p in plugin_files):
-            parser.error("Weather plugin destination contains symlinks; review before installing")
+            parser.error(f"{plugin_id} destination contains symlinks; review before installing")
         plugin_changed = [p for p in plugin_files if not (plugin_target / p.name).is_file()
                           or not filecmp.cmp(p, plugin_target / p.name, shallow=False)]
         for p in plugin_changed:
@@ -65,13 +69,13 @@ def main():
         if plugin_changed and not args.dry_run:
             if plugin_target.exists():
                 stamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
-                backup = config / "omarchy/theme-backups" / f"weather-widget-{stamp}"
+                backup = config / "omarchy/theme-backups" / f"{widget}-widget-{stamp}"
                 shutil.copytree(plugin_target, backup, symlinks=True)
                 print(f"Backup: {backup}")
             plugin_target.mkdir(parents=True, exist_ok=True)
             for p in plugin_changed:
                 shutil.copy2(p, plugin_target / p.name)
-        print("Enable separately: omarchy-shell shell rescanPlugins && omarchy plugin enable neon-district.weather")
+        print(f"Enable separately: omarchy-shell shell rescanPlugins && omarchy plugin enable {plugin_id}")
     if args.apply:
         print("Apply: omarchy theme set neon-district")
         if not args.dry_run:

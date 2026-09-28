@@ -74,6 +74,35 @@ After updating plugin code, use `omarchy restart shell` if the running shell ret
 
 Check live status with `omarchy-shell neon-weather status` or refresh with `omarchy-shell neon-weather refresh`. Disable with `omarchy plugin disable neon-district.weather`. `widgets/neon-district.weather/ChamferFrame.qml` is the reusable frame for future widgets. `WeatherCard.qml` is independent of the desktop host, making offline preview/testing possible. `WidgetTypography.qml` and `DigitalReadout.qml` provide reusable typography for future widgets. Both fonts are bundled locally with their SIL Open Font License files; no system-wide font change or runtime font download is required. See [font sources](widgets/neon-district.weather/FONT-SOURCES.txt).
 
+## Desktop widgets — System monitor
+
+![System monitor with digital readouts and live graphs; sample data](assets/system-widget.png)
+
+CPU and memory percentages, 80-second activity graphs, home-filesystem disk usage, download/upload speeds, and uptime. All readings come from local Linux counters every two seconds; this widget makes no network requests and needs no extra Python packages.
+
+```bash
+python3 install.py --system-widget --dry-run
+python3 install.py --system-widget
+omarchy-shell shell rescanPlugins
+omarchy plugin enable neon-district.system
+```
+
+It aligns below the weather widget and inherits its monitor, horizontal position, and background opacity when not configured separately. Without a weather entry, it defaults to the right side. On smaller displays, set explicit coordinates to avoid overlap. To enable blur, use the updated `extras/neon-widgets.lua` from the weather setup above; its rule covers both widgets.
+
+Optional fields in the `neon-district.system` plugin entry in `~/.config/omarchy/shell.json`:
+
+| Field | Purpose |
+| --- | --- |
+| `x`, `y` | Position in logical pixels; clamped inside the chosen screen |
+| `monitor` | Output name, such as `eDP-1` |
+| `backgroundOpacity` | Fill opacity, from 0.1 to 1.0 |
+| `diskPath` | Path on the filesystem to measure; defaults to your home directory |
+| `interface` | Network interface override; otherwise follows the default route, with active physical interface fallback |
+
+Network rates are **bytes per second**, shown as KiB/s or MiB/s. The first rate/CPU sample is blank while counters establish a baseline. Changing interfaces or resetting counters does not produce a false speed spike. RAM usage excludes available/reclaimable memory; disk percentage follows `df`-style available-space accounting. Uptime is shown as hours:minutes. CPU and memory graphs use a fixed 0–100% scale.
+
+Check it with `omarchy-shell neon-system status`. Disable with `omarchy plugin disable neon-district.system`. The frame, fonts, and numeric components are packaged identically to the weather widget so either plugin can be installed independently.
+
 ## Wallpapers
 
 | Neon District | After Hours |

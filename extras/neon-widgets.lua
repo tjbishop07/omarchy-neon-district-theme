@@ -12,7 +12,7 @@ hl.config({
 
 hl.layer_rule({
   name = "neon-district-widget-blur",
-  match = { namespace = "^neon-district-weather$" },
+  match = { namespace = "^neon-district-(weather|system)$" },
   blur = true,
   -- Do not blur the transparent pixels outside the chamfered silhouette.
   ignore_alpha = 0.01,

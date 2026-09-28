@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "neon-district.system",
+  "name": "Neon District System Monitor",
+  "version": "1.0.0",
+  "author": "tjbishop07",
+  "description": "Desktop CPU, memory, disk and network monitor with live graphs",
+  "kinds": ["service"],
+  "entryPoints": {"service": "Service.qml"}
+}

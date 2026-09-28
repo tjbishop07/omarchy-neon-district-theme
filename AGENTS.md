@@ -22,6 +22,13 @@ This repository is the Neon District Omarchy theme. Read INSTALL.md before insta
 - The plugin reads the existing Omarchy weather location; do not invent or overwrite location settings.
 - Run `python3 widgets/neon-district.weather/test_weather.py` after backend changes.
 
+## System monitor
+
+- Install when requested with `python3 install.py --system-widget`; enable `neon-district.system` after a plugin rescan. No network permission is needed: it only reads local counters.
+- Run `python3 widgets/neon-district.system/test_monitor.py` after collector changes.
+- The system plugin packages copies of the weather plugin's shared frame, typography, digital readout, fonts, and licenses. Keep these assets byte-identical; Omarchy forbids symlinks inside plugin packages.
+- For new plugins, finish copying and validating before enabling them. Avoid overlapping file-triggered hot reloads with a shell restart, given the observed Quickshell reload crash.
+
 ## Verification
 
 After activation, run `omarchy theme current` and confirm `Neon District`. Run `hyprctl configerrors`; report any errors rather than claiming success. Check the current background symlink resolves to an installed wallpaper. Do not lock the user's session to test styling.
