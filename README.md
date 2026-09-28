@@ -66,6 +66,8 @@ require("hypr.neon-widgets")
 
 Then run `hyprctl reload` and `hyprctl configerrors`. This enables Hyprland's global blur engine (size 6, two passes) and adds a [layer rule](https://wiki.hypr.land/configuring/core/rules/layer-rules/) for the weather widget. Transparent chamfer corners are excluded; text and borders stay sharp. The global blur settings also affect other surfaces already eligible for blur. Remove the `require` line and reload to undo. The theme installer does not edit your Hyprland configuration automatically.
 
+If the glass effect is hard to see, try `"backgroundOpacity": 0.70`. Blur is most visible over detailed wallpaper; the dark sky in the upper-left can look almost solid. Omarchy's open scratchpad also dims the desktop behind it. Close the scratchpad to judge the widget's normal appearance. A configuration check confirms the rule is accepted, but a visual check is still needed to confirm the effect.
+
 `unit` accepts `metric` or `imperial`; when omitted, an `en_US` locale uses Fahrenheit and other locales use Celsius. Optional `monitor` selects an output name (for example `eDP-1`); otherwise the first screen is used. Coordinates are logical pixels from the upper-left. Set your city in Omarchy's existing weather panel. No API key is needed; weather data comes from [Open-Meteo's forecast API](https://open-meteo.com/en/docs).
 
 After updating plugin code, use `omarchy restart shell` if the running shell retains the old version. Disabling and re-enabling a plugin may reset its per-plugin settings; review the entry afterward.
