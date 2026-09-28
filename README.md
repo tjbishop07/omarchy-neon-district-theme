@@ -8,15 +8,16 @@ A cyberpunk Omarchy theme: near-black violet, electric cyan, hot pink, and pale 
 
 ## Install
 
-Requires an Omarchy installation using `colors.toml` and the Quickshell-based shell. Run from a checkout of this repository:
+Requires Python 3 and an Omarchy installation using `colors.toml` and the Quickshell shell. From a complete checkout:
 
 ```bash
-mkdir -p ~/.config/omarchy/themes/neon-district
-cp -r colors.toml shell.toml icons.theme keyboard.rgb backgrounds ~/.config/omarchy/themes/neon-district/
-omarchy theme set neon-district
+python3 install.py --dry-run
+python3 install.py --apply
 ```
 
-This installs the palette, lock-screen colors, and wallpapers. The optional prompt and window effects below are separate user configuration.
+The installer backs up an existing theme before changes and installs only theme assets. Optional prompt and window effects remain separate.
+
+See [INSTALL.md](INSTALL.md) for verification, staging, and rollback. Coding agents should read [AGENTS.md](AGENTS.md).
 
 ## Palette
 
