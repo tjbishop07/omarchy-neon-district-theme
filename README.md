@@ -179,3 +179,17 @@ Press Escape to close. Return to the original with
 `omarchy-shell lock setDesign editorial`. The installer backs up changed files;
 the custom design is kept separately from plugin updates. Editorial is adapted
 from SirJul1337's MIT-licensed Lock Explorer (license included beside the design).
+
+#### Qt 6.12 compatibility
+
+Qt 6.12 adds a `QtQuick.Color` type whose name conflicts with Omarchy's `Color`
+singleton. This design explicitly uses `Omarchy.Color` and `Omarchy.Style` through
+an aliased `qs.Commons` import, so it does not depend on which unqualified type
+Qt resolves. Re-run the lock-screen installer and rescan designs to update an
+existing installation.
+
+A missing top bar or a menu that only darkens the screen can also result from
+this conflict in Omarchy itself or other plugins. The theme's `colors.toml` and
+`shell.toml` do not cause the name collision; updating this design alone does not
+repair affected shell or third-party plugin code. Those components need their
+own compatible updates or workaround.
